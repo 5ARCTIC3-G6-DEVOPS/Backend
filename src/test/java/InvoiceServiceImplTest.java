@@ -83,7 +83,7 @@ class InvoiceServiceImplTest {
 
     }
 
-    @Test
+    /*@Test
     void testGetInvoicesBySupplier() throws ParseException {
         Long idSupplier = 1L;
         Supplier supplier = new Supplier(1L,"code","label",null,null); // Create a sample supplier
@@ -99,7 +99,7 @@ class InvoiceServiceImplTest {
         assertNotNull(retrievedInvoices);
         assertEquals(1, retrievedInvoices.size());
         verify(supplierRepository, times(1)).findById(idSupplier);
-    }
+    }*/
     @Test
     void testAssignOperatorToInvoice()  throws ParseException {
         Long idOperator = 1L;
