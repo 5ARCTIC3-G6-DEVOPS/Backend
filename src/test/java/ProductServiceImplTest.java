@@ -1,5 +1,9 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -18,16 +22,18 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest(classes = DevOps_ProjectSpringBootApplication.class) // Specify the main application class
+@ExtendWith(MockitoExtension.class)
+
 public class ProductServiceImplTest {
 
-    @MockBean
+    @Mock
     private ProductRepository productRepository;
 
-    @MockBean
+    @Mock
     private StockRepository stockRepository;
 
-    @Autowired
+    @InjectMocks
+
     private ProductServiceImpl productService;
 
     @Test
@@ -52,6 +58,10 @@ public class ProductServiceImplTest {
         assertNotNull(result, "The result should not be null after adding the product.");
         assertEquals("Product Test", result.getTitle(), "The product title should match the expected value.");
         assertEquals(stock, result.getStock(), "The product should be associated with the correct stock.");
+        System.out.println("added product named" + product.getTitle());
+
+        System.out.println("test add product is working");
+
 
     }
 
@@ -71,6 +81,11 @@ public class ProductServiceImplTest {
         // Check that the product is retrieved correctly
         assertNotNull(result, "The retrieved product should not be null.");
         assertEquals("Test Product", result.getTitle(), "The retrieved product title should match the expected value.");
+        System.out.println(product.getTitle());
+        System.out.println("test retrieve product is working");
+
+
+
     }
 
     @Test
@@ -89,6 +104,12 @@ public class ProductServiceImplTest {
 
         // Check that the list of products is correct
         assertEquals(2, result.size(), "The size of the retrieved product list should be 2.");
+
+        for (Product product : result) {
+            System.out.println("Product Name: " + product.getTitle());
+        }
+
+        System.out.println("test retrieve all products is working");
     }
 
     @Test
@@ -98,5 +119,8 @@ public class ProductServiceImplTest {
 
         // Verify that the deleteById method was called
         Mockito.verify(productRepository, Mockito.times(1)).deleteById(1L);
+        System.out.println("test delete product is working");
+
+
     }
 }
