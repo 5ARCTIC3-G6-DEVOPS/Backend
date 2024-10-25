@@ -11,7 +11,7 @@
     <groupId>tn.esprit</groupId>
     <artifactId>5ARCTIC3-GROUPE6-DevOps</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>5ARCTIC3-GROUPE6</name>
+    <name>5ARCTIC3-GROUPE6-DevOps</name>
     <description>DevOps_Project</description>
     <properties>
         <java.version>11</java.version>
@@ -36,11 +36,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
         <dependency>
             <groupId>org.springdoc</groupId>
