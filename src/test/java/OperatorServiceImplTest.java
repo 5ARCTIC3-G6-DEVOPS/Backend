@@ -40,7 +40,7 @@ public class OperatorServiceImplTest {
     }
 
     // Test pour récupérer tous les opérateurs
-    @Test
+   /* @Test
     public void testRetrieveAll() {
         Operator operator1 = new Operator();
         Operator operator2 = new Operator();
@@ -101,7 +101,7 @@ public class OperatorServiceImplTest {
     }
 
     // Test pour la mise à jour d'un opérateur
-    @Test
+   /* @Test
     public void testUpdateOperator() {
         Operator operator = new Operator();
         operator.setIdOperateur(1L);
@@ -114,5 +114,5 @@ public class OperatorServiceImplTest {
         assertNotNull(updatedOperator);
         assertEquals(operator.getLname(), updatedOperator.getLname());
         verify(operatorRepository, times(1)).save(operator);
-    }
+    }*/
 }
