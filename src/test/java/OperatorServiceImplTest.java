@@ -80,11 +80,7 @@ public class OperatorServiceImplTest {
         verify(operatorRepository, times(1)).findById(idOperateur);
     }
 
-    public class OperatorNotFoundException extends RuntimeException {
-        public OperatorNotFoundException(String message) {
-            super(message);
-        }
-    }
+
 
     // Test pour récupérer un opérateur par son ID (non trouvé)
     @Test
@@ -96,7 +92,7 @@ public class OperatorServiceImplTest {
         when(operatorRepository.findById(IdOperateur)).thenReturn(Optional.empty());
 
         // Act & Assert
-        OperatorNotFoundException exception = assertThrows(OperatorNotFoundException.class, () -> {
+        OperatorNotFoundException exception = assertThrows(tn.esprit.devops_project.exceptions.OperatorNotFoundException.class, () -> {
             operatorServiceImpl.retrieveOperator(IdOperateur);
         });
 
