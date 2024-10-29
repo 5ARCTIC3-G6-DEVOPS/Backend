@@ -89,16 +89,19 @@ public class OperatorServiceImplTest {
     // Test pour récupérer un opérateur par son ID (non trouvé)
     @Test
     public void testRetrieveOperator_NotFound() {
-        Long idOperateur = 2L;
+        // Arrange
+        Long IdOperateur = 2L;
 
-        when(operatorRepository.findById(idOperateur)).thenReturn(Optional.empty());
+        // Simule un retour vide pour l'identifiant donné
+        when(operatorRepository.findById(IdOperateur)).thenReturn(Optional.empty());
 
+        // Act & Assert
         OperatorNotFoundException exception = assertThrows(OperatorNotFoundException.class, () -> {
-            operatorServiceImpl.retrieveOperator(idOperateur);
+            operatorServiceImpl.retrieveOperator(IdOperateur);
         });
 
         assertEquals("Operator not found", exception.getMessage());
-        verify(operatorRepository, times(1)).findById(idOperateur);
+        verify(operatorRepository, times(1)).findById(IdOperateur);
     }
 
     // Test pour la mise à jour d'un opérateur
