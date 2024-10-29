@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.devops_project.entities.Operator;
+import tn.esprit.devops_project.exceptions.OperatorNotFoundException;
 import tn.esprit.devops_project.repositories.OperatorRepository;
 import tn.esprit.devops_project.services.Iservices.IOperatorService;
 
@@ -32,15 +33,18 @@ public class OperatorServiceImpl implements IOperatorService {
 		operatorRepository.deleteById(id);
 		
 	}
+	@Override
+
+	public Operator retrieveOperator(Long idOperateur) {
+		return operatorRepository.findById(idOperateur)
+				.orElseThrow(() -> new OperatorNotFoundException("Operator not found"));
+	}
 
 	@Override
 	public Operator updateOperator(Operator operator) {
 		return operatorRepository.save(operator);
 	}
 
-	@Override
-	public Operator retrieveOperator(Long id) {
-		return operatorRepository.findById(id).orElseThrow(() -> new NullPointerException("Operator not found"));
-	}
+
 
 }
