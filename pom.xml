@@ -11,7 +11,7 @@
     <groupId>tn.esprit</groupId>
     <artifactId>5ARCTIC3-G6-DevOps</artifactId>
     <version>4.0-Validation</version>
-    <name>5ARCTIC3-GROUPE6-DevOps</name>
+    <name>5ARCTIC3-G6-DevOps</name>
     <description>DevOps_Project</description>
     <properties>
         <java.version>11</java.version>
