@@ -10,7 +10,7 @@
     </parent>
     <groupId>tn.esprit</groupId>
     <artifactId>5ARCTIC3-GROUPE6-DevOps</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>3.0</version>
     <name>5ARCTIC3-GROUPE6-DevOps</name>
     <description>DevOps_Project</description>
     <properties>
