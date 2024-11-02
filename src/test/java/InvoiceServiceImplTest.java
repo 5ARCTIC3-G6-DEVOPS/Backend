@@ -82,24 +82,6 @@ class InvoiceServiceImplTest {
 
 
     }
-
-    /*@Test
-    void testGetInvoicesBySupplier() throws ParseException {
-        Long idSupplier = 1L;
-        Supplier supplier = new Supplier(1L,"code","label",null,null); // Create a sample supplier
-        Invoice invoice3 = new Invoice(7L, 12F, 15F, dateFormat.parse("2024-10-19"), dateFormat.parse("2024-10-19"), true, invoiceDetailSet, supplier);
-        Set<Invoice> invoiceSet=new HashSet<>();
-        invoiceSet.add(invoice3);
-        supplier.setInvoices(invoiceSet);
-
-        when(supplierRepository.findById(idSupplier)).thenReturn(Optional.of(supplier));
-
-        List<Invoice> retrievedInvoices = invoiceService.getInvoicesBySupplier(idSupplier);
-
-        assertNotNull(retrievedInvoices);
-        assertEquals(1, retrievedInvoices.size());
-        verify(supplierRepository, times(1)).findById(idSupplier);
-    }*/
     @Test
     void testAssignOperatorToInvoice()  throws ParseException {
         Long idOperator = 1L;
