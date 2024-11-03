@@ -10,7 +10,7 @@ WORKDIR /app
 COPY target/*.jar app.jar
 
 # Étape 5 : Exposer le port sur lequel l'application sera accessible
-EXPOSE 8080
+EXPOSE 8082
 
 # Étape 6 : Définir la commande à exécuter lorsque le conteneur démarre
 ENTRYPOINT ["java", "-jar", "app.jar"]
