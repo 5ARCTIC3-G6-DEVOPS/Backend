@@ -25,4 +25,7 @@ public class Product implements Serializable {
     @ManyToOne
     @JsonIgnore
     Stock stock;
+
+    public Product(long l, String testProduct) {
+    }
 }
