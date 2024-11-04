@@ -90,6 +90,7 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <phase>initialize</phase> <!-- Use initialize phase -->
                     </execution>
                     <execution>
                         <id>report</id>
@@ -100,6 +101,7 @@
                     </execution>
                 </executions>
             </plugin>
+
 
 
         </plugins>
