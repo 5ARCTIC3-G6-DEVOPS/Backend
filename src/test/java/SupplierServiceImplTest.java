@@ -29,6 +29,8 @@ public class SupplierServiceImplTest {
 
     @Test
     public void testAddSupplier() {
+        System.out.println("Testing addSupplier method...");
+        
         Supplier supplier = new Supplier();
         supplier.setCode("SUP001");
         supplier.setLabel("Test Supplier");
@@ -41,23 +43,27 @@ public class SupplierServiceImplTest {
         assertEquals("SUP001", result.getCode(), "The supplier code should match the expected value.");
         assertEquals("Test Supplier", result.getLabel(), "The supplier label should match the expected value.");
 
-        System.out.println("Added supplier named: " + supplier.getLabel());
+        System.out.println("Successfully added supplier with code: " + supplier.getCode() + " and label: " + supplier.getLabel());
     }
 
     @Test
     public void testRetrieveSupplier() {
-        Supplier supplier = new Supplier(1L, "SUP001", "Test Supplier", BigDecimal.valueOf(20.00), 85, 5);
+        System.out.println("Testing retrieveSupplier method...");
 
+        Supplier supplier = new Supplier(1L, "SUP001", "Test Supplier", BigDecimal.valueOf(20.00), 85, 5);
         Mockito.when(supplierRepository.findById(1L)).thenReturn(Optional.of(supplier));
 
         Supplier result = supplierService.retrieveSupplier(1L);
 
         assertNotNull(result, "The retrieved supplier should not be null.");
         assertEquals("SUP001", result.getCode(), "The retrieved supplier code should match the expected value.");
+        System.out.println("Successfully retrieved supplier with code: " + result.getCode());
     }
 
     @Test
     public void testRetrieveAllSuppliers() {
+        System.out.println("Testing retrieveAllSuppliers method...");
+
         List<Supplier> suppliers = Arrays.asList(
                 new Supplier(1L, "SUP001", "Test Supplier 1", BigDecimal.valueOf(20.00), 85, 5),
                 new Supplier(2L, "SUP002", "Test Supplier 2", BigDecimal.valueOf(18.00), 90, 7)
@@ -68,31 +74,38 @@ public class SupplierServiceImplTest {
         List<Supplier> result = supplierService.retrieveAllSuppliers();
 
         assertEquals(2, result.size(), "The size of the retrieved supplier list should be 2.");
-        for (Supplier supplier : result) {
-            System.out.println("Supplier Name: " + supplier.getLabel());
-        }
+        System.out.println("Retrieved " + result.size() + " suppliers.");
+        result.forEach(supplier -> System.out.println("Supplier Name: " + supplier.getLabel()));
     }
 
     @Test
     public void testUpdateSupplier() {
-        Supplier supplier = new Supplier(1L, "SUP001", "Updated Supplier", BigDecimal.valueOf(20.00), 85, 5);
+        System.out.println("Testing updateSupplier method...");
 
+        Supplier supplier = new Supplier(1L, "SUP001", "Updated Supplier", BigDecimal.valueOf(20.00), 85, 5);
         Mockito.when(supplierRepository.save(supplier)).thenReturn(supplier);
 
         Supplier result = supplierService.updateSupplier(supplier);
 
         assertNotNull(result, "The result should not be null after updating the supplier.");
         assertEquals("Updated Supplier", result.getLabel(), "The supplier label should match the expected value after update.");
+        System.out.println("Successfully updated supplier to label: " + result.getLabel());
     }
 
     @Test
     public void testDeleteSupplier() {
+        System.out.println("Testing deleteSupplier method...");
+
         supplierService.deleteSupplier(1L);
         Mockito.verify(supplierRepository, Mockito.times(1)).deleteById(1L);
+
+        System.out.println("Successfully deleted supplier with ID: 1");
     }
 
     @Test
     public void testSelectOptimalSupplier_Success() {
+        System.out.println("Testing selectOptimalSupplier method...");
+
         Product product = new Product(1L, "Test Product");
         int requiredQuantity = 10;
 
@@ -113,8 +126,10 @@ public class SupplierServiceImplTest {
         supplier3.setProductStock(Map.of(product, 5));
 
         Supplier optimalSupplier = supplierService.selectOptimalSupplier(product, requiredQuantity);
-        assertNotNull(optimalSupplier);
-        System.out.println(optimalSupplier.getLabel());
+
+        assertNotNull(optimalSupplier, "The optimal supplier should not be null.");
         assertEquals("Supplier B", optimalSupplier.getLabel(), "The optimal supplier should be Supplier B");
+        
+        System.out.println("Optimal supplier selected: " + optimalSupplier.getLabel());
     }
 }
