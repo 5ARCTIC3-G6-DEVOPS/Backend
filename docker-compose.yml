@@ -9,7 +9,7 @@ services:
     depends_on:
       - database
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/devops
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/devops
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ""
 
